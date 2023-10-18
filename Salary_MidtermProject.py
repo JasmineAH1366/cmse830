@@ -5,7 +5,7 @@ import altair as alt
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-salary = pd.read_csv("C:\\Users\\12058\\OneDrive\\Documents\\CMSE 830 - Foundations of Data Science\\Datasets\\Salary_Data.csv")
+salary = pd.read_csv("Salary_Data.csv")
 
 salary = salary.drop([172,260,2011,3136,5247,6455])
 
