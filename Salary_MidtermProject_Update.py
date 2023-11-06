@@ -12,7 +12,7 @@ salary = pd.read_csv("Salary_Data.csv")
 st.title("A ROADTRIP TO SUCCESS :red_car:")
 
 #Tab Order and Names
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Buckle Up: Introduction", "Maintenance: Data", "Let's Ride", "First Stop: Discovery", "And the Journey Continues..."])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Buckle Up: Introduction", "Maintenance: Data", "Let's Ride!", "Add a Stop: Discovery", "And the Journey Continues..."])
 
 #Tab1
 with tab1: 
@@ -29,15 +29,16 @@ with tab1:
     with col111:
         st.write("Your journey to success awaits you!")
         st.write("Continue to go through this app by navigating to the next following tabs:")
-        st.markdown("**Directions: Data**")  
-        st.markdown("**First Stop: Discovery**")
+        st.markdown("**Maintenance: Data**")  
+        st.markdown("**Let's Ride!**")
+        st.markdown("**Add a Stop: Discovery**")
         st.markdown("**And the Journey Continues...**")
     with col112:
         image2 = Image.open("success.jpg")
         st.image(image2)
 with tab2:
     st.write("Before we start our journey, we need to make sure everything is fit for a safe trip. ")
-    st.write(":red_car: View Data")
+    st.write(":wrench: View Data")
     salary
     url = "https://www.kaggle.com/datasets/mohithsairamreddy/salary-data"
     st.caption(url)
