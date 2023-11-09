@@ -122,6 +122,50 @@ with tab4:
     st.write("Who all participated in this survey?")
     st.caption("In the last tab, we saw more of a range of the participants within in each column. Here, we will see a more in depth representation of the participants.")
     variable = st.selectbox("Choose a Variable", ["Age","Gender","Education Level","Job Title", "Years of Experience","Salary","All"])
+    if variable == "Age":
+        fig, ax = plt.subplots()
+        salary['Age'].value_counts().plot(ax=ax, kind='bar', title='Age', ylabel='Frequency')
+        st.pyplot(fig)
+    if variable == "Gender":
+        fig, ax = plt.subplots()
+        salary['Gender'].value_counts().plot(ax=ax, kind='bar', title='Gender', ylabel='Frequency')
+        st.pyplot(fig)
+    if variable == "Education Level":
+        fig, ax = plt.subplots()
+        salary['Education Level'].value_counts().plot(ax=ax, kind='bar', title='Education Level', ylabel='Frequency')
+        st.pyplot(fig)
+    if variable == "Job Title":
+        fig, ax = plt.subplots()
+        salary['Job Title'].value_counts()[:10].plot(ax=ax, kind='bar', title='Job Title', ylabel='Frequency')
+        st.pyplot(fig)
+    if variable == "Years of Experience":
+        fig, ax = plt.subplots()
+        salary['Years of Experience'].value_counts().plot(ax=ax, kind='bar', title='Years of Experience', ylabel='Frequency')
+        st.pyplot(fig)
+    if variable == "Salary":
+        fig, ax = plt.subplots()
+        salary['Salary'].plot(kind='hist', title='Salary', ylabel='Frequency')
+        st.pyplot(fig)
+    if variable == "All":
+        fig, axes = plt.subplots(nrows = 2, ncols=3, figsize=(25,16))
+        salary['Age'].value_counts().plot(ax=axes[0,0], kind='bar', title='Age', ylabel='Frequency')
+        salary['Gender'].value_counts().plot(ax=axes[0,1], kind='bar', title='Gender', ylabel='Frequency')
+        salary['Education Level'].value_counts().plot(ax=axes[0,2], kind='bar', title='Education Level', ylabel='Frequency')
+        salary['Job Title'].value_counts()[:10].plot(ax=axes[1,0], kind='bar', title='Job Title', ylabel='Frequency')
+        salary['Years of Experience'].value_counts().plot(ax=axes[1,1], kind='bar', title='Years of Experience', ylabel='Frequency')
+        salary['Salary'].plot(ax=axes[1,2],kind='hist', title='Salary', ylabel='Frequency')
+        st.pyplot(fig, title= "Data Distribution")
+    po = st.checkbox("Participant Observations")
+    if po:
+        st.markdown(
+            """
+            Most of the participants are:
+            - 35 years old or younger
+            - Male
+            - Have Bachelor Degrees
+            - Software Engineers and Data Scientists
+            - Have 10 or less years of experience""")
+
     st.header("GENDER")
     gender = st.selectbox("Choose a Gender", ["Female", "Male", "Other"])
     female = salary.query("Gender == 'Female'")
