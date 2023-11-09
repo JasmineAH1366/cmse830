@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 #Data
-salary = pd.read_csv("C:\\Users\\12058\\OneDrive\\Documents\\CMSE 830 - Foundations of Data Science\\Datasets\\Salary_Data.csv")
+salary = pd.read_csv("Salary_Data.csv")
 
 #Title
 st.title("A ROADTRIP TO SUCCESS :red_car:")
