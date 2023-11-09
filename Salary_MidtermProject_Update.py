@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 #Data
-salary = pd.read_csv("Salary_Data.csv")
+salary = pd.read_csv("C:\\Users\\12058\\OneDrive\\Documents\\CMSE 830 - Foundations of Data Science\\Datasets\\Salary_Data.csv")
+
 #Title
 st.title("A ROADTRIP TO SUCCESS :red_car:")
 
@@ -18,7 +19,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Buckle Up: Introduction", "Maintenance:
 with tab1: 
     col11, col12 = st.columns(2)
     with col11:
-        image1 = Image.open("path.jpg")
+        image1 = Image.open("C:\\Users\\12058\\OneDrive\\Documents\\CMSE 831 - Computational Optimization\\Homework\\path.jpg")
         image1_new = image1.resize((600,400))
         st.image(image1_new)
     with col12:
@@ -34,37 +35,93 @@ with tab1:
         st.markdown("**Add a Stop: Discovery**")
         st.markdown("**And the Journey Continues...**")
     with col112:
-        image2 = Image.open("success.jpg")
+        image2 = Image.open("C:\\Users\\12058\\OneDrive\\Documents\\CMSE 831 - Computational Optimization\\Homework\\success.jpg")
         st.image(image2)
 with tab2:
     st.write("Before we start our journey, we need to make sure everything is fit for a safe trip. ")
-    st.write(":wrench: View Data")
-    salary
-    url = "https://www.kaggle.com/datasets/mohithsairamreddy/salary-data"
-    st.caption(url)
-    st.write("The data above has a total of 6,704 rows and 6 columns.")
-    st.write(":red_car: Missing Values")
-    salary.loc[salary.isnull().any(axis=1)]    
-    st.write("The data has a total of 6 rows that display missing data. Removing this data will not have a significant effect on our overall goal with the data. Thus these rows will be deleted.")
+    st.write("Let's start by viewing our data below.")
+    view_data = st.checkbox("View Data :wrench:")
+    if view_data:
+        salary
+        url = "https://www.kaggle.com/datasets/mohithsairamreddy/salary-data"
+        st.caption(url)
+        st.write("The data above has a total of 6,704 rows and 6 columns.")
+    st.write("Let's check to see if there are any missing values in our dataset.")
+    missing_values = st.checkbox("Missing Values :wrench:")
+    if missing_values:
+        mv = salary.loc[salary.isnull().any(axis=1)]    
+        mv
+        st.write("The data has a total of 6 rows that display missing data. Removing this data will not have a significant effect on our overall goal with the data. Thus, these rows will be deleted.")
     salary = salary.drop([172,260,2011,3136,5247,6455])
-    st.write(":red_car: Entries")
-    salary['Education Level'].replace("Bachelor's Degree", "Bachelor's", inplace=True)
-    salary['Education Level'].replace("Master's Degree", "Master's", inplace=True)
-    salary['Education Level'].replace("phD","PhD",inplace=True)
-    st.write("Some variable entries were altered so that we can have consistent entries. This is important when grouping.")
-    st.write("The following changes were made:")
-    st.markdown("**Bachelor's Degree to Bachelor's**")
-    st.markdown("**Master's Degree to Master's**")
-    st.markdown("**phD to PhD**")
-    st.write("We have checked and taken care of all the maintenance. Let's Ride! :red_car:")
+    st.write("Let's check for any inconsistent values.")
+    incon_value = st.checkbox("Inconsistent Values :wrench:")   
+    if incon_value:
+        iv = salary['Education Level'].value_counts()
+        iv
+        st.write("As we can see above, there are inconsistent values. To fix this issue, we need to change the variables so that they can be consistent with one another. For example, Bachelor's and Bachelor's Degree should be one name since it is describing one degree. You can change it depending on your preference. For now, it will be changed to 'Bachelor's' and likewise for the other values.")
+        salary['Education Level'].replace("Bachelor's Degree", "Bachelor's", inplace=True)
+        salary['Education Level'].replace("Master's Degree", "Master's", inplace=True)
+        salary['Education Level'].replace("phD","PhD",inplace=True)    
+        st.write("The changes are below.")
+        iv_new = salary['Education Level'].value_counts()
+        iv_new
+        st.write("We now have consistent values.")
+        st.write("We have checked and taken care of all the maintenance. Let's Ride! :red_car:")
+salary['Education Level'].replace("Bachelor's Degree", "Bachelor's", inplace=True)
+salary['Education Level'].replace("Master's Degree", "Master's", inplace=True)
+salary['Education Level'].replace("phD","PhD",inplace=True)
 with tab3:
     st.write("Below is our new dataset.")
     salary
-    st.write("Along our journey, let us not forget to enjoy the beautiful views.")
-    st.write("Next, we will visually analyze our data. :red_car:")
+    st.write("Let's take a look at each column.")
+    age_box = st.checkbox("Age")
+    if age_box:
+        age_range = salary.Age.unique()
+        age_range.sort()
+        age_range
+        st.caption("OBSERVATION:")
+        st.write("The ages of the participants range from 21 to 62 years old. ")
+    gender_box = st.checkbox("Gender")
+    if gender_box:
+        gender_range = salary.Gender.unique()
+        gender_range
+        st.caption("OBSERVATION:")
+        st.write("The input values in the Age column are Female, Male, and Other. Other may have been selected if participant does not identify as either male or female and/or chose to not share gender information.")
+    edu_box = st.checkbox("Education Level")
+    if edu_box:
+        edu_range = salary['Education Level'].unique()
+        edu_range
+        st.caption("OBSERVATION:")
+        st.write("The input values in the Education Level column are Bachelor's, Master's, PhD, and High School as we have seen in the previous tab.")
+    job_box = st.checkbox("Job Title")
+    if job_box:
+        job_range = salary['Job Title'].unique()
+        job_range
+        st.caption("OBSERVATION:")
+        st.write("There are a total of 191 Job Titles represented in this dataset.")
+    yoe_box = st.checkbox("Years of Experience")
+    if yoe_box:
+        yoe_range = salary['Years of Experience'].unique()
+        yoe_range.sort()
+        yoe_range
+        st.caption("OBSERVATION:")
+        st.write("The input values in the Years of Experience column ranges from 0 to 34 years.")
+    salary_box = st.checkbox("Salary")
+    if salary_box:
+        salary_range = salary["Salary"].unique()
+        salary_range.sort()
+        salary_range
+        st.caption("OBSERVATION:")
+        st.write("The salary amount ranges from \$350 to \$250,000.")
+        st.write("Now, that we've taken a look at each column and have gained a better understanding of our data, we can continue our journey. As we continue our journey, let us not forget to enjoy the beautiful views.")
+        st.write("Next, we will visually analyze our data. :red_car:")
 with tab4:
     st.write("There are many ways that we can visually analyze our data.")
-    st.write("Let's break it down into 2 subsections: **Gender** and **Education Level**")
+    st.write("Let's take it one stop at a time!")
+    st.subheader(":octagonal_sign: FIRST STOP: PARTICIPANTS")
+    st.write("Who all participated in this survey?")
+    st.caption("In the last tab, we saw more of a range of the participants within in each column. Here, we will see a more in depth representation of the participants.")
+    variable = st.selectbox("Choose a Variable", ["Age","Gender","Education Level","Job Title", "Years of Experience","Salary","All"])
     st.header("GENDER")
     gender = st.selectbox("Choose a Gender", ["Female", "Male", "Other"])
     female = salary.query("Gender == 'Female'")
