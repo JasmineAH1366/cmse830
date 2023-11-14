@@ -203,7 +203,7 @@ with tab4:
         order_age_se.plot(ax=axes[0], kind='bar', title='Age', ylabel='Frequency')
         se['Gender'].value_counts().plot(ax=axes[1], kind='bar', title='Gender', ylabel='Frequency')
         se['Education Level'].value_counts().plot(ax=axes[2], kind='bar', title='Education Level', ylabel='Frequency')
-        st.pyplot(fig, title= "Software Engineer")
+        st.pyplot(fig)
         fig, axes = plt.subplots(nrows = 1, ncols=2, figsize=(16,6))
         order_yoe_se.plot(ax=axes[0], kind='bar', title='Years of Experience', ylabel='Frequency')
         se['Salary'].plot(ax=axes[1],kind='hist',bins=bin_edges, edgecolor="black", title='Salary', ylabel='Frequency')
