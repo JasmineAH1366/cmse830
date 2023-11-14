@@ -10,7 +10,7 @@ import plotly.express as px
 
 
 #Data
-salary = pd.read_csv("C:\\Users\\12058\\OneDrive\\Documents\\CMSE 830 - Foundations of Data Science\\Datasets\\Salary_Data.csv")
+salary = pd.read_csv("Salary_Data.csv")
 
 
 #Title
@@ -23,7 +23,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Buckle Up: Introduction", "Maintenance:
 with tab1: 
     col11, col12 = st.columns(2)
     with col11:
-        image1 = Image.open("C:\\Users\\12058\\OneDrive\\Documents\\CMSE 831 - Computational Optimization\\Homework\\path.jpg")
+        image1 = Image.open("path.jpg")
         image1_new = image1.resize((600,400))
         st.image(image1_new)
     with col12:
