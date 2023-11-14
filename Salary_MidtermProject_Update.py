@@ -39,7 +39,7 @@ with tab1:
         st.markdown("**Add a Stop: Discovery**")
         st.markdown("**And the Journey Continues...**")
     with col112:
-        image2 = Image.open("C:\\Users\\12058\\OneDrive\\Documents\\CMSE 831 - Computational Optimization\\Homework\\success.jpg")
+        image2 = Image.open("success.jpg")
         st.image(image2)
 with tab2:
     st.write("Before we start our journey, we need to make sure everything is fit for a safe trip. ")
