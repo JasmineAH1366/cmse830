@@ -448,6 +448,10 @@ with tab5:
     st.write("Hopeful that this has been a great roadtrip so far. Remember that this is only the start of your journey. Continue this journey by discovering your interests, researching careers and career paths, connecting and networking with people in your field, and more.") 
     st.write("We may not know what's ahead of us, but always strive to reach your destination. Never quit, alter your route, if need be, but continue this journey for as long as you need to.")
     st.write("Most importantly, ENJOY THE RIDE!")
+    image3 = Image.open("sunset_car.jpg")
+    st.image(image3)
+
+
     
 
 
