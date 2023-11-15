@@ -102,7 +102,7 @@ with tab3:
         job_range = salary['Job Title'].unique()
         job_range
         st.caption("OBSERVATION:")
-        st.write("There are a total of 191 Job Titles represented in this dataset.")
+        st.write("There are a total of 191 Job Titles presented in this dataset.")
     yoe_box = st.checkbox("Years of Experience")
     if yoe_box:
         yoe_range = salary['Years of Experience'].unique()
@@ -228,7 +228,7 @@ with tab4:
         order_age_ds.plot(ax=axes[0], kind='bar', title='Age', ylabel='Frequency')
         ds['Gender'].value_counts().plot(ax=axes[1], kind='bar', title='Gender', ylabel='Frequency')
         ds['Education Level'].value_counts().plot(ax=axes[2], kind='bar', title='Education Level', ylabel='Frequency')
-        st.pyplot(fig, title= "Data Scientist")
+        st.pyplot(fig)
         fig, axes = plt.subplots(nrows = 1, ncols=2, figsize=(16,6))
         order_yoe_ds.plot(ax=axes[0], kind='bar', title='Years of Experience', ylabel='Frequency')
         ds['Salary'].plot(ax=axes[1],kind='hist',bins=bin_edges, edgecolor="black", title='Salary', ylabel='Frequency')
@@ -443,9 +443,9 @@ with tab4:
                 - Have a Master's Degree
                 - Have 7 years of experience
                 - Have a salary amount between \$170,000.00 to \$175,000.00""") 
-    st.write("We have completed all of our stops and now we're ready to continue our journey.:red_car:")
+    st.write("Once you have looked through your desired careers, we'll be ready to continue our journey.:red_car:")
 with tab5:
-    st.write("Hopeful that this has been a great roadtrip so far. Remember that this is only the start of your journey. Continue this journey by discovering your interests, researching careers and career paths, connecting and networking with people in your field, and more.") 
+    st.write("Hopeful that this has been a great roadtrip so far. Remember that this is only the start of your journey. Continue this journey by discovering your interests, researching careers and career paths, connecting and networking with professionals in your field, and more.") 
     st.write("We may not know what's ahead of us, but always strive to reach your destination. Never quit, alter your route, if need be, but continue this journey for as long as you need to.")
     st.write("Most importantly, ENJOY THE RIDE!")
     image3 = Image.open("sunset_car.jpg")
